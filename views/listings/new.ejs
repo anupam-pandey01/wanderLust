@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="row offset-3">
+        
+    </div>
+     
+    <div class="container mt-2 mb-2">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+                <h3 class="mb-4">Create a New Listing</h3>
+                <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-semibold">Title</label>
+                        <input type="text" class="form-control" name="listing[title]" placeholder="Add a catchy title" required>
+                        <div class="invalid-feedback">Please enter a title</div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-semibold">Description</label>
+                        <textarea name="listing[description]" class="form-control" rows="4" placeholder="Describe your place" required></textarea>
+                        <div class="invalid-feedback">Please write a short description</div>
+                    </div>
+
+                    <!-- Image Upload -->
+                    <div class="mb-3">
+                        <label for="img" class="form-label fw-semibold">Upload Image</label>
+                        <input type="file" name="listing[image]" class="form-control">
+                    </div>
+
+                    <!-- Category Selection -->
+                    <label class="form-label fw-semibold d-block">Select Tag</label>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="listing[category]" value="Room" checked>
+                        <label class="btn btn-outline-primary" for="btncheck1">Rooms</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="listing[category]" value="Iconic Cities">
+                        <label class="btn btn-outline-primary" for="btncheck2">Iconic Cities</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="listing[category]" value="Camping">
+                        <label class="btn btn-outline-primary" for="btncheck3">Camping</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="listing[category]" value="Arctic">
+                        <label class="btn btn-outline-primary" for="btncheck4">Arctic</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" name="listing[category]" value="Winter Cities">
+                        <label class="btn btn-outline-primary" for="btncheck5">Winter Cities</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" name="listing[category]" value="Castles">
+                        <label class="btn btn-outline-primary" for="btncheck6">Castles</label>
+
+                        <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" name="listing[category]" value="Farms">
+                        <label class="btn btn-outline-primary" for="btncheck7">Farms</label>
+                    </div>
+
+                    <!-- Price & Country -->
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="price" class="form-label fw-semibold">Price (₹)</label>
+                            <input type="number" name="listing[price]" placeholder="1200" class="form-control" required>
+                            <div class="invalid-feedback">Price should be valid</div>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="country" class="form-label fw-semibold">Country</label>
+                            <input type="text" name="listing[country]" placeholder="India" class="form-control" required>
+                            <div class="invalid-feedback">Country name should be valid</div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label fw-semibold">Location</label>
+                        <input type="text" name="listing[location]" placeholder="Jaipur, Rajasthan" class="form-control" required>
+                        <div class="invalid-feedback">Location should be valid</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                        <button class="btn btn-success mt-3">Add Listing</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,98 @@
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+        </div>
+
+        <!-- Search Box with dropdown -->
+        <div class="dropdown ms-auto ">
+          <form action="/filter" method="GET" class="d-flex">
+                  <input class="form-control me-2 search-box" type="search" id="searchBox" placeholder="Search Destinations" aria-label="Search" name="location">
+                  <button class="btn search-btn d-none d-md-inline-block" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i> Search
+                  </button>
+          </form>
+
+          <ul class="dropdown-menu mt-2" id="searchDropdown" style="width: 100%;  min-height: 50px; max-height: 200px; overflow-y: scroll;">
+              <% 
+                  let uniqueLocations = new Set(); // Create a Set to store unique locations
+                  for (let filter of allFilters) {
+                      if (!uniqueLocations.has(filter.location)) { // Check if the location is already in the Set
+                          uniqueLocations.add(filter.location); // Add location to the Set
+              %>
+                          <li>
+                              <a class="dropdown-item" href="/filter?location=<%= encodeURIComponent(filter.location) %>">
+                                  <%= filter.location %>
+                              </a>
+                          </li>
+              <% 
+                      }
+                  }
+              %>
+          </ul>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new" style="color: #fe424d !important;">WanderLust Your Home</a>
+          <% if(!currUser) { %>
+          <a class="nav-link " href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+          <% } %>
+          <% if(currUser) { %>
+          <a class="nav-link" href="/logout"><b>Log out</b></a>
+          <% } %>
+        </div> 
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let searchBox = document.getElementById("searchBox");
+    let searchDropdown = document.getElementById("searchDropdown");
+    let dropdownItems = searchDropdown.getElementsByTagName("li");
+
+    // Show dropdown when clicking on the search box
+    searchBox.addEventListener("focus", function() {
+        searchDropdown.classList.add("show");
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+        if (!searchBox.contains(event.target) && !searchDropdown.contains(event.target)) {
+            searchDropdown.classList.remove("show");
+        }
+    });
+
+    // Filter dropdown items based on input
+    searchBox.addEventListener("input", function() {
+        let filter = searchBox.value.toLowerCase(); // Get search text & convert to lowercase
+
+        let hasVisibleItems = false; // Track if any item is shown
+
+        for (let item of dropdownItems) {
+            let text = item.textContent.toLowerCase(); // Get location name from <li>
+
+            if (text.includes(filter)) {
+                item.style.display = "block"; // Show matching items
+                hasVisibleItems = true;
+            } else {
+                item.style.display = "none"; // Hide non-matching items
+            }
+        }
+
+        // Show dropdown only if there are matching results
+        if (hasVisibleItems) {
+            searchDropdown.classList.add("show");
+        } else {
+            searchDropdown.classList.remove("show");
+        }
+    });
+  });
+</script>

@@ -1,0 +1,215 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+  flex: 1;   
+}
+
+.navbar{
+  
+    background-color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+/* footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials{
+    width: 100%;
+}
+
+.f-info-socials i{
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cards */
+
+.card-listing{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white ;
+}
+
+/* New Page */
+.add-button{
+    background-color: #fe424d !important;
+    color: white !important;
+}
+
+/* Edit Page */
+.edit-btn{
+    background-color: #fe424d !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* New Page */
+.show-img{
+    height: 30vh;
+}
+
+/* Show page */
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Map */
+
+#map { height: 300px; }
+
+/* Search Box */
+
+form .search-box{
+    border-radius: 25px;
+    width: 20rem;
+    padding-left: 1rem;
+  }
+form .search-btn{
+    border-radius: 25px;
+    background-color: #fe424d;
+    color: white;
+  }
+form .search-btn i{
+    display: inline;
+    margin-right:0.2rem;
+  }
+form .search-btn:hover{
+    background-color: #fe424d;
+    color: white;
+  }
+
+#searchDropdown{
+    width: 100%;  
+    min-height: 50px; 
+    max-height: 200px; 
+    overflow-y: scroll;
+}
+
+  /* Filters */
+
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    }
+.filter{
+        text-align: center;
+        margin-top: 2rem;
+        margin-right: 2rem;
+    }
+
+.filter a{
+    text-decoration: none;
+    color: black;
+    opacity: 0.7;
+}
+
+.filter p{
+    font-size: 0.8rem;
+}
+
+.filter a:hover{
+    opacity:1;
+    cursor:pointer;
+}
+
+.tax-info{
+    display: none;
+}
+.tax-toggle {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 2.5rem; 
+    font-size: 0.9rem;
+}
+
+.toggle-container{
+    padding: 0 1rem 0 1rem;
+}
+
+.tax-toggle-small{
+    display: none;
+}
+
+ /* Make it scrollable only on small screens */
+ @media (max-width: 768px) {
+    #filters {
+      display: flex;
+      flex-wrap: nowrap; /* Prevents items from wrapping */
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .tax-toggle-big{
+        display: none;
+    }
+
+    .tax-toggle-small{
+        display: block;
+    }
+
+    .tax-toggle-small{
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        margin-left: auto;
+        width: 70%;
+    }
+ }
